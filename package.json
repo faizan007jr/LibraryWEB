@@ -1,6 +1,9 @@
 {
-  "name": "book-public",
-  "version": "0.0.0",
+  "name": "faizan-library-project",
+  "version": "1.0.0",
+  "engines": {
+  	"node": "14.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng build --prod",
