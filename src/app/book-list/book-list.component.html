@@ -1,0 +1,26 @@
+<div class="container mt-3">
+  <app-header [content]="pageContent.header"></app-header>
+
+  <table id="book" class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Available</th>
+      <th scope="col">Review</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i = index" routerLink="/books/{{book._id}}">
+        <th data-th="#" scope="row">{{i+1}}</th>
+        <td data-th="Title">{{book.title}}</td>
+        <td data-th="Author">{{book.author.firstName}}, {{book.author.lastName}}</td>
+        <td data-th="Genre">{{book.genre}}</td>
+        <td data-th="Available">{{book.available}}</td>
+        <td class="review"><a class="btn btn-review col-12" routerLink="/review/{{book._id}}">Review</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

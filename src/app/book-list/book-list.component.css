@@ -1,0 +1,46 @@
+table#book tbody tr:hover{
+  cursor: pointer;
+}
+
+table#book thead {
+  background-color: #6d3353;
+  color: #FFF;
+}
+
+.table{
+  color: #FFFFFF;
+}
+
+.btn-review {
+  background-color: #020031;
+  color: #FFF;
+}
+
+@media screen and (max-width: 574px) {
+  table#book thead {
+    display: none;
+  }
+
+  table#book tbody td {
+    display: block;
+    padding: .6rem;
+    min-width: 320px;
+  }
+
+  table#book tbody tr td:first-child {
+    background: #6d3353;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  table#book tbody td:before {
+    content: attr(data-th);
+    font-weight: bold;
+    display: inline-block;
+    width: 8rem;
+  }
+
+  table#book tbody td.review:before {
+    display: unset;
+  }
+}

@@ -1,0 +1,12 @@
+.navbar {
+  background-color: #020031;
+
+}
+
+.navbar-dark .navbar-brand{
+  font-family: CentSchbook Mono BT, Bitstream Vera Sans Mono, monofont, monospace;
+  font-size: x-large;
+  border: 40px;
+  background-color: saddlebrown;
+  border-radius: 20px;
+}

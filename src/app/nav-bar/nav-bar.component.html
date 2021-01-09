@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark">
+  <div class="container">
+    <a class="navbar-brand font-italic" routerLink="">LIBS</a>
+    <button class="navbar-toggler"
+            type="button" data-toggle="collapse"
+            data-target="#navbar" aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="books">Books</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="addDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add
+          </a>
+          <div class="dropdown-menu" aria-labelledby="addDropdown">
+            <a class="dropdown-item" routerLink="add-book">Book</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="add-author">Author</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="add-publisher">Publisher</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

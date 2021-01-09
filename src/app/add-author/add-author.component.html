@@ -1,0 +1,49 @@
+<div class="container mt-3">
+  <app-header [content]="pageContent.header"></app-header>
+
+  <form (ngSubmit)="createNewAuthor(newAuthor)" class="form-group p-2" #authorForm="ngForm">
+
+    <div class="row form-group">
+      <label for="firstName" class="col-form-label col-sm-4 col-md-3">First Name</label>
+      <input #firstName="ngModel" [(ngModel)]="newAuthor.firstName" type="text" id="firstName" name="firstName" class="col-sm-4 form-control" placeholder="First Name" required>
+
+      <div *ngIf="firstName.invalid && authorForm.submitted"
+           class="col-sm-4 text-danger">
+        <div *ngIf="firstName.errors.required">
+          First Name is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+      <label for="lastName" class="col-form-label col-sm-4 col-md-3">Last Name</label>
+      <input #lastName="ngModel" [(ngModel)]="newAuthor.lastName" type="text" id="lastName" name="lastName" class="col-sm-4 form-control" placeholder="Last Name" required>
+
+      <div *ngIf="lastName.invalid && authorForm.submitted"
+           class="col-sm-4 text-danger">
+        <div *ngIf="lastName.errors.required">
+          Last Name is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+      <label for="bestTitle" class="col-form-label col-sm-4 col-md-3">Best Title</label>
+      <input #bestTitle="ngModel" [(ngModel)]="newAuthor.bestTitle" type="text" id="bestTitle" name="bestTitle" class="col-sm-4 form-control" placeholder="Best Title" required>
+
+      <div *ngIf="bestTitle.invalid && authorForm.submitted"
+           class="col-sm-4 text-danger">
+        <div *ngIf="bestTitle.errors.required">
+          Best Title is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+      <button type="submit" class="btn col-sm-4 offset-sm-4 offset-md-3">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+#memberHead {
+  margin: 30px;
+  font-size: 1.62em;
+  color: #439ce8;
+}
+
+#content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#member1,
+#member2,
+#member3 {
+  display: grid;
+  margin: 30px;
+}
+
+#content img {
+  height: 320px;
+  width: 320px;
+  box-shadow: 0 0 20px 1px #666666;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.name,
+.position {
+  text-align: center;
+  margin-top: 10px;
+  color: #439ce8;
+}
+
+.name {
+  font-size: 2em;
+  font-family: "Mortal Engines";
+}
+
+.position {
+  font-style: italic;
+}

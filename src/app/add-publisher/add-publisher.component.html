@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <app-header [content]="pageContent.header"></app-header>
+
+  <form (ngSubmit)="createNewPublisher(newPublisher)" class="form-group p-2" #publisherForm="ngForm">
+
+    <div class="row form-group">
+      <label for="name" class="col-form-label col-sm-4 col-md-3">Name</label>
+      <input #name="ngModel" [(ngModel)]="newPublisher.name" type="text" id="name" name="name" class="col-sm-4 form-control" placeholder="Name" required>
+
+      <div *ngIf="name.invalid && publisherForm.submitted"
+           class="col-sm-4 text-danger">
+        <div *ngIf="name.errors.required">
+          Name is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+      <label for="city" class="col-form-label col-sm-4 col-md-3">City</label>
+      <input #city="ngModel" [(ngModel)]="newPublisher.city" type="text" id="city" name="city" class="col-sm-4 form-control" placeholder="City" required>
+
+      <div *ngIf="city.invalid && publisherForm.submitted"
+           class="col-sm-4 text-danger">
+        <div *ngIf="city.errors.required">
+          City is required.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row form-group">
+      <button type="submit" class="btn col-sm-4 offset-sm-4 offset-md-3">Submit</button>
+    </div>
+  </form>
+</div>

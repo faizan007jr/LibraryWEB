@@ -1,0 +1,63 @@
+<div class="container mt-3">
+  <app-header [content]="pageContent.header"></app-header>
+  <div class="form-group container border rounded-lg p-2">
+    <div class="form-group border rounded-lg p-2">
+      <div class="row">
+        <h3 class="col-12">Author:</h3>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">First Name:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.author.firstName }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Last Name:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.author.lastName }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Best Title:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.author.bestTitle }}</span>
+      </div>
+    </div>
+    <div class="form-group border rounded-lg p-2">
+      <div class="row">
+        <h3 class="col-12">Publisher:</h3>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Name:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.publisher.name }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-labels col-4 font-weight-bold">City:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.publisher.city }}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Copies Available:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.available }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Genre:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.genre }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Language:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.language }}</span>
+      </div>
+      <div class="row">
+        <label class="col-form-label col-4 font-weight-bold">Pages:</label>
+        <span *ngIf="selectedBook" class="col-4 form-control-plaintext text-light">{{ selectedBook.pages }}</span>
+      </div>
+      <div *ngIf="ratings != null" class="row">
+        <label class="col-form-label col-4 font-weight-bold">Ratings:</label>
+        <star-rating class="col-4" value="{{ ratings }}" checkedcolor="#FFD700" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+      </div>
+    </div>
+    <div class="row form-group pl-3 pr-3">
+      <a *ngIf="selectedBook" routerLink="/update/{{selectedBook._id}}" class="btn col-sm-3 offset-sm-4" id="btnEdit">Edit</a>
+    </div>
+    <div class="row form-group pl-3 pr-3">
+      <button type="button" class="btn btn-danger col-sm-3 offset-sm-4" (click)="deleteBook(selectedBook._id)">Delete</button>
+    </div>
+  </div>
+</div>

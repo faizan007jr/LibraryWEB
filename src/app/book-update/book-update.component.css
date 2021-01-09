@@ -1,0 +1,11 @@
+.btn {
+  background-color: #020031;
+  color: #FFFFFF;
+}
+
+.btn:focus {
+  border-color: #020031;
+  box-shadow: 0 0 0 0.2rem rgba(2, 0, 49, 0.25);
+}
+
+
