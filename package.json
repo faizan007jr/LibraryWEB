@@ -2,8 +2,8 @@
   "name": "faizan-library-project",
   "version": "1.0.0",
   "engines": {
-    "node": "14.15.3",
-    "npm": "16.14.9"
+  	"node": "14.15.3",
+  	"npm": "6.14.9"
   },
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod"
-  },
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.1.2",
