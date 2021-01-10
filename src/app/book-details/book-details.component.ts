@@ -4,7 +4,7 @@ import { BookDataService } from '../book-data.service';
 import { switchMap } from "rxjs/operators";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { ReviewDataService } from "../review-data.service";
-import { async } from '@angular/core/testing';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-book-details',

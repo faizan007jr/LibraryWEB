@@ -41,43 +41,43 @@ import {RatingModule} from "ng-starrating";
     HttpModule,
     FormsModule,
     RouterModule.forRoot([
-      {
+    {
         path: '',
         component: HomePageComponent
-      },
-      {
+    },
+    {
         path: 'about',
         component: AboutComponent
-      },
-      {
+    },
+    {
         path: 'add-book',
         component: AddComponent
-      },
-      {
+    },
+    {
         path: 'add-author',
         component: AddAuthorComponent
-      },
-      {
+    },
+    {
         path: 'add-publisher',
         component: AddPublisherComponent
-      },
-      {
+    },
+    {
         path: 'books',
         component: BookListComponent
-      },
-      {
+    },
+    {
         path: 'books/:bookid',
         component: BookDetailsComponent
-      },
-      {
+    },
+    {
         path: 'update/:bookid',
         component: BookUpdateComponent
-      },
-      {
+    },
+    {
         path: 'review/:bookid',
         component: ReviewBookComponent
-      }
-    ]),
+    }
+], { relativeLinkResolution: 'legacy' }),
     RatingModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
