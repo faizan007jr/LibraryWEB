@@ -16,7 +16,25 @@ import { PublisherDataService } from "../publisher-data.service";
 })
 export class BookUpdateComponent implements OnInit {
 
-	public selectedBook: Book;
+	public selectedBook: Book = {
+		_id: '',
+		title: '',
+		author: {
+			_id: '',
+			firstName: '',
+			lastName: '',
+			bestTitle: ''
+		},
+		publisher: {
+			_id: '',
+			name: '',
+			city: ''
+		},
+		available: 0,
+		pages: 0,
+		genre: '',
+		language: ''
+	};
 
 	public authors: Author[];
 	public publishers: Publisher[];
