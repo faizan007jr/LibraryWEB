@@ -1,11 +1,11 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {ReviewDataService} from "../review-data.service";
-import {BookDataService} from "../book-data.service";
-import {switchMap} from "rxjs/operators";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Book} from "../book";
-import {Review} from "../review";
-import {StarRatingComponent} from "ng-starrating";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { ReviewDataService } from "../review-data.service";
+import { BookDataService } from "../book-data.service";
+import { switchMap } from "rxjs/operators";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Book } from "../book";
+import { Review } from "../review";
+import { StarRatingComponent } from "ng-starrating";
 
 @Component({
   selector: 'app-review-book',
@@ -16,10 +16,10 @@ import {StarRatingComponent} from "ng-starrating";
 export class ReviewBookComponent implements OnInit {
 
   constructor(private reviewService: ReviewDataService,
-              private bookService: BookDataService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private ngZone: NgZone) { }
+    private bookService: BookDataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private ngZone: NgZone) { }
 
   pageContent = {
     header: {
@@ -39,7 +39,7 @@ export class ReviewBookComponent implements OnInit {
     this.route.params.pipe(switchMap((params: Params) => {
       this.review.title = params['bookid'];
       this.reviewService.getRatings(params['bookid'])
-        .then((r: number) => { if(r != null) this.review.ratings = r; });
+        .then((r: number) => { if (r != null) this.review.ratings = r; });
       return this.bookService.getSingleBook(params['bookid'])
     }))
       .subscribe((book: Book) => {
@@ -48,12 +48,12 @@ export class ReviewBookComponent implements OnInit {
       })
   }
 
-  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+  onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
     this.review.ratings = $event.newValue;
   }
 
   reviewBook(review: Review) {
-    if(this.review.title && this.review.ratings) {
+    if (this.review.title && this.review.ratings) {
       this.reviewService.createReview(review)
         .then((insertedReview: Review) => {
           this.ngZone.run(() => {

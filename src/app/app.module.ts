@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_BASE_HREF } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
@@ -18,69 +19,88 @@ import { FooterComponent } from './footer/footer.component';
 import { AddAuthorComponent } from './add-author/add-author.component';
 import { AddPublisherComponent } from './add-publisher/add-publisher.component';
 import { ReviewBookComponent } from './review-book/review-book.component';
-import {RatingModule} from "ng-starrating";
+import { RatingModule } from "ng-starrating";
+
+import { OverlayModule } from '@angular/cdk/overlay';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.component';
+import { BookDataService } from './book-data.service';
 
 @NgModule({
-  declarations: [
-    BookListComponent,
-    AboutComponent,
-    HeaderComponent,
-    FrameworkComponent,
-    BookDetailsComponent,
-    AddComponent,
-    HomePageComponent,
-    BookUpdateComponent,
-    NavBarComponent,
-    FooterComponent,
-    AddAuthorComponent,
-    AddPublisherComponent,
-    ReviewBookComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    FormsModule,
-    RouterModule.forRoot([
-    {
-        path: '',
-        component: HomePageComponent
-    },
-    {
-        path: 'about',
-        component: AboutComponent
-    },
-    {
-        path: 'add-book',
-        component: AddComponent
-    },
-    {
-        path: 'add-author',
-        component: AddAuthorComponent
-    },
-    {
-        path: 'add-publisher',
-        component: AddPublisherComponent
-    },
-    {
-        path: 'books',
-        component: BookListComponent
-    },
-    {
-        path: 'books/:bookid',
-        component: BookDetailsComponent
-    },
-    {
-        path: 'update/:bookid',
-        component: BookUpdateComponent
-    },
-    {
-        path: 'review/:bookid',
-        component: ReviewBookComponent
-    }
-], { relativeLinkResolution: 'legacy' }),
-    RatingModule
-  ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
-  bootstrap: [FrameworkComponent]
+    declarations: [
+        BookListComponent,
+        AboutComponent,
+        HeaderComponent,
+        FrameworkComponent,
+        BookDetailsComponent,
+        AddComponent,
+        HomePageComponent,
+        BookUpdateComponent,
+        NavBarComponent,
+        FooterComponent,
+        AddAuthorComponent,
+        AddPublisherComponent,
+        ReviewBookComponent,
+        SpinnerOverlayComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        FormsModule,
+        RouterModule.forRoot([
+            {
+                path: '',
+                component: HomePageComponent
+            },
+            {
+                path: 'about',
+                component: AboutComponent
+            },
+            {
+                path: 'add-book',
+                component: AddComponent
+            },
+            {
+                path: 'add-author',
+                component: AddAuthorComponent
+            },
+            {
+                path: 'add-publisher',
+                component: AddPublisherComponent
+            },
+            {
+                path: 'books',
+                component: BookListComponent
+            },
+            {
+                path: 'books/:bookid',
+                component: BookDetailsComponent
+            },
+            {
+                path: 'update/:bookid',
+                component: BookUpdateComponent
+            },
+            {
+                path: 'review/:bookid',
+                component: ReviewBookComponent
+            }
+        ], { relativeLinkResolution: 'legacy' }),
+        RatingModule,
+        MatProgressSpinnerModule,
+        OverlayModule,
+        HttpClientModule
+    ],
+    providers: [
+        {
+            provide: APP_BASE_HREF,
+            useValue: '/'
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: BookDataService,
+            multi: true
+        }
+    ],
+    bootstrap: [FrameworkComponent]
 })
 export class AppModule { }

@@ -5,10 +5,10 @@
 
     <div class="row form-group">
       <label for="title" class="col-form-label col-sm-4 col-md-3">Title</label>
-      <input #title="ngModel" [(ngModel)]="selectedBook.title"  type="text" id="title" name="title" class="col-sm-4 form-control" placeholder="Title" required>
+      <input #title="ngModel" [(ngModel)]="selectedBook.title" type="text" id="title" name="title"
+        class="col-sm-4 form-control" placeholder="Title" required>
 
-      <div *ngIf="title.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="title.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="title.errors.required">
           Title is required.
         </div>
@@ -18,12 +18,13 @@
 
     <div class="row form-group">
       <label for="author" class="col-form-label col-sm-4 col-md-3">Author</label>
-      <select #author="ngModel" [(ngModel)]="selectedBook.author" id="author" name="author" class="col-sm-4 form-control" required>
-        <option [value]="author._id" *ngFor="let author of authors">{{ author.firstName }}, {{ author.lastName }}</option>
+      <select #author="ngModel" [(ngModel)]="selectedBook.author" id="author" name="author"
+        class="col-sm-4 form-control" required>
+        <option [value]="author._id" *ngFor="let author of authors">{{ author.firstName }}, {{ author.lastName }}
+        </option>
       </select>
 
-      <div *ngIf="author.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="author.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="author.errors.required">
           Author is required.
         </div>
@@ -33,12 +34,12 @@
 
     <div class="row form-group">
       <label for="publisher" class="col-form-label col-sm-4 col-md-3">Publisher</label>
-      <select #publisher="ngModel" [(ngModel)]="selectedBook.publisher" id="publisher" name="publisher" class="col-sm-4 form-control" required>
+      <select #publisher="ngModel" [(ngModel)]="selectedBook.publisher" id="publisher" name="publisher"
+        class="col-sm-4 form-control" required>
         <option [value]="publisher._id" *ngFor="let publisher of publishers">{{ publisher.name }}</option>
       </select>
 
-      <div *ngIf="publisher.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="publisher.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="publisher.errors.required">
           Publisher is required.
         </div>
@@ -48,10 +49,10 @@
 
     <div class="row form-group">
       <label for="genre" class="col-form-label col-sm-4 col-md-3">Genre</label>
-      <input #genre="ngModel" [(ngModel)]="selectedBook.genre" id="genre" name="genre" class="col-sm-4 form-control" placeholder="Genre" required>
+      <input #genre="ngModel" [(ngModel)]="selectedBook.genre" id="genre" name="genre" class="col-sm-4 form-control"
+        placeholder="Genre" required>
 
-      <div *ngIf="genre.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="genre.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="genre.errors.required">
           Genre is required.
         </div>
@@ -61,10 +62,10 @@
 
     <div class="row form-group">
       <label for="language" class="col-form-label col-sm-4 col-md-3">Language</label>
-      <input #language="ngModel" [(ngModel)]="selectedBook.language" id="language" name="language" class="col-sm-4 form-control" placeholder="Language" required>
+      <input #language="ngModel" [(ngModel)]="selectedBook.language" id="language" name="language"
+        class="col-sm-4 form-control" placeholder="Language" required>
 
-      <div *ngIf="language.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="language.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="language.errors.required">
           Language is required.
         </div>
@@ -74,10 +75,10 @@
 
     <div class="row form-group">
       <label for="pages" class="col-form-label col-sm-4 col-md-3">Pages</label>
-      <input #pages="ngModel" [(ngModel)]="selectedBook.pages" type="number" min="1" id="pages" name="pages" class="col-sm-4 form-control" placeholder="Pages" required>
+      <input #pages="ngModel" [(ngModel)]="selectedBook.pages" type="number" min="1" id="pages" name="pages"
+        class="col-sm-4 form-control" placeholder="Pages" required>
 
-      <div *ngIf="pages.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="pages.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="pages.errors.required">
           Page is required.
         </div>
@@ -87,10 +88,10 @@
 
     <div class="row form-group">
       <label for="available" class="col-form-label col-sm-4 col-md-3">Copies Available</label>
-      <input #available="ngModel" [(ngModel)]="selectedBook.available" type="number" min="1" id="available" name="available" class="col-sm-4 form-control" placeholder="Copies Available" required>
+      <input #available="ngModel" [(ngModel)]="selectedBook.available" type="number" min="1" id="available"
+        name="available" class="col-sm-4 form-control" placeholder="Copies Available" required>
 
-      <div *ngIf="available.invalid && bookForm.submitted"
-           class="col-sm-4 text-danger">
+      <div *ngIf="available.invalid && bookForm.submitted" class="col-sm-4 text-danger">
         <div *ngIf="available.errors.required">
           Available is required.
         </div>

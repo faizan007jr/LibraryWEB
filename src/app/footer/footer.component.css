@@ -1,4 +1,6 @@
 footer {
   background-color: #63646d;
+  position: fixed;
+  width: -webkit-fill-available;
+  bottom: 0;
 }
-
