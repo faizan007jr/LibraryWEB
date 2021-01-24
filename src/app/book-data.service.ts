@@ -30,30 +30,35 @@ export class BookDataService implements HttpInterceptor {
       }));
   }
 
-  getSingleBook(bookID: String): Promise<void | Book> {
-    return this.http.get(this.booksUrl + bookID)
-      .toPromise()
-      .then(response => response as Book)
-      .catch(this.handleError);
+  async getSingleBook(bookID: String): Promise<Book> {
+    try {
+      return await this.http.get(this.booksUrl + bookID).toPromise() as Book;
+    } catch (err) {
+      console.log("error::: " + err);
+    }
   }
 
-  createBook(newBook: Book): Promise<void | Book> {
-    return this.http.post(this.booksUrl, newBook)
-      .toPromise()
-      .then(response => response as Book)
-      .catch(this.handleError);
+  async createBook(newBook: Book): Promise<Book> {
+    try {
+      return await this.http.post(this.booksUrl, newBook).toPromise() as Book;
+    } catch (err) {
+      console.log("error::: " + err);
+    }
   }
 
-  updateBook(updatedBook: Book): Promise<void | Book> {
-    return this.http.put(this.booksUrl + updatedBook._id, updatedBook)
-      .toPromise()
-      .then(response => response as Book)
-      .catch(this.handleError);
+  async updateBook(updatedBook: Book): Promise<Book> {
+    try {
+      return await this.http.put(this.booksUrl + updatedBook._id, updatedBook).toPromise() as Book;
+    } catch (err) {
+      console.log("error::: " + err);
+    }
   }
 
-  deleteBook(bookID: string): Promise<void | string> {
-    return this.http.delete(this.booksUrl + bookID)
-      .toPromise()
-      .then();
+  async deleteBook(bookID: string): Promise<void> {
+    try {
+      await this.http.delete(this.booksUrl + bookID).toPromise();
+    } catch (err) {
+      console.log("error::: " + err);
+    }
   }
 }

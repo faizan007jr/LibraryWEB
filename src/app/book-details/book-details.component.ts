@@ -38,13 +38,9 @@ export class BookDetailsComponent implements OnInit {
       });
   }
 
-  public deleteBook(bookID: string): void {
-    this.bookService.deleteBook(bookID)
-      .then((str: string) => {
-        this.ngZone.run(() => {
-          this.router.navigate([`/books`]);
-        });
-      });
+  async deleteBook(bookID: string) {
+    await this.bookService.deleteBook(bookID);
+    this.ngZone.run(() => this.router.navigate([`/books`]));
   }
 
   pageContent = {

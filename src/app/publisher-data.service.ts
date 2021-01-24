@@ -18,20 +18,20 @@ export class PublisherDataService implements HttpInterceptor {
     return next.handle(req).pipe(finalize(() => spinnerSubscription.unsubscribe()));
   }
 
-  private handleError(error: any) {
-    console.log("error");
-  };
-
-  getPublishers(): Promise<void | Publisher[]> {
-    return this.http.get(this.publishersURL)
-      .toPromise()
-      .then(response => response as Publisher[])
-      .catch(this.handleError);
+  async getPublishers(): Promise<Publisher[]> {
+    try {
+      return await this.http.get(this.publishersURL).toPromise() as Publisher[];
+    } catch(err) {
+      console.log(err);
+      return [];
+    }
   }
 
-  createPublisher(publisher: Publisher): Promise<void | Publisher> {
-    return this.http.post(this.publishersURL, publisher)
-      .toPromise()
-      .then(response => response as Publisher);
+  async createPublisher(publisher: Publisher): Promise<Publisher> {
+    try {
+      return await this.http.post(this.publishersURL, publisher).toPromise() as Publisher;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }

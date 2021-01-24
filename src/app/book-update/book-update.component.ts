@@ -46,7 +46,7 @@ export class BookUpdateComponent implements OnInit {
 		private router: Router,
 		private ngZone: NgZone) { }
 
-	ngOnInit(): void {
+	async ngOnInit() {
 		this.route.params.pipe(switchMap((params: Params) => this.bookService.getSingleBook(params['bookid'])))
 			.subscribe((book: Book) => {
 				this.selectedBook = book;
@@ -54,22 +54,15 @@ export class BookUpdateComponent implements OnInit {
 				this.pageContent.header.body = "Edit selected Book.";
 			});
 
-		this.authorService
-			.getAuthors()
-			.then((authors: Author[]) => this.authors = authors);
-
-		this.publisherService
-			.getPublishers()
-			.then((publishers: Publisher[]) => this.publishers = publishers);
+		this.authors = await this.authorService.getAuthors();
+		this.publishers = await this.publisherService.getPublishers();
 	}
 
-	public updateBook(book: Book): void {
-		this.bookService.updateBook(book)
-			.then((updatedBook: Book) => {
-				this.ngZone.run(() => {
-					this.router.navigate([`/books/${updatedBook._id}`]);
-				});
-			});
+	public async updateBook(book: Book) {
+		let updatedBook = await this.bookService.updateBook(book);
+		this.ngZone.run(() => {
+			this.router.navigate([`/books/${updatedBook['_id']}`]);
+		});
 	}
 
 	public pageContent = {

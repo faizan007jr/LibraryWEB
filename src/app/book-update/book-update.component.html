@@ -18,8 +18,9 @@
 
     <div class="row form-group">
       <label for="author" class="col-form-label col-sm-4 col-md-3">Author</label>
-      <select #author="ngModel" [(ngModel)]="selectedBook.author" id="author" name="author"
+      <select #author="ngModel" [(ngModel)]="selectedBook.author._id" id="author" name="author"
         class="col-sm-4 form-control" required>
+        <option [value]="null" disabled>Select an author</option>
         <option [value]="author._id" *ngFor="let author of authors">{{ author.firstName }}, {{ author.lastName }}
         </option>
       </select>
@@ -34,8 +35,9 @@
 
     <div class="row form-group">
       <label for="publisher" class="col-form-label col-sm-4 col-md-3">Publisher</label>
-      <select #publisher="ngModel" [(ngModel)]="selectedBook.publisher" id="publisher" name="publisher"
+      <select #publisher="ngModel" [(ngModel)]="selectedBook.publisher._id" id="publisher" name="publisher"
         class="col-sm-4 form-control" required>
+        <option [value]="null" disabled>Select a publisher</option>
         <option [value]="publisher._id" *ngFor="let publisher of publishers">{{ publisher.name }}</option>
       </select>
 

@@ -19,19 +19,23 @@ export class AuthorDataService implements HttpInterceptor {
   }
 
   private handleError(error: any) {
-    console.log("error");
+    console.log("error:::", error);
   };
 
-  getAuthors(): Promise<void | Author[]> {
-    return this.http.get(this.authorsURL)
-      .toPromise()
-      .then(response => response as Author[])
-      .catch(this.handleError);
+  async getAuthors(): Promise<Author[]> {
+    try {
+      return await this.http.get(this.authorsURL).toPromise() as Author[];
+    } catch (err) {
+      this.handleError(err);
+      return [];
+    }
   }
 
-  createAuthor(newAuthor: Author): Promise<void | Author> {
-    return this.http.post(this.authorsURL, newAuthor)
-      .toPromise()
-      .then(response => response as Author);
+  async createAuthor(newAuthor: Author): Promise<Author> {
+    try {
+      return await this.http.post(this.authorsURL, newAuthor).toPromise() as Author;
+    } catch (err) {
+      this.handleError(err);
+    }
   }
 }

@@ -1,11 +1,11 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {BookDataService} from "../book-data.service";
-import {Book} from "../book";
-import {Router} from "@angular/router";
-import {Author} from "../author";
-import {Publisher} from "../publisher";
-import {AuthorDataService} from "../author-data.service";
-import {PublisherDataService} from "../publisher-data.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { BookDataService } from "../book-data.service";
+import { Book } from "../book";
+import { Router } from "@angular/router";
+import { Author } from "../author";
+import { Publisher } from "../publisher";
+import { AuthorDataService } from "../author-data.service";
+import { PublisherDataService } from "../publisher-data.service";
 
 @Component({
   selector: 'app-add',
@@ -26,44 +26,24 @@ export class AddComponent implements OnInit {
     title: ""
   };
 
-  authors: Author[];
-  publishers: Publisher[];
+  public authors: Author[];
+  public publishers: Publisher[];
 
   constructor(private bookService: BookDataService,
-              private authorService: AuthorDataService,
-              private publisherService: PublisherDataService,
-              private router: Router,
-              private ngZone: NgZone) { }
+    private authorService: AuthorDataService,
+    private publisherService: PublisherDataService,
+    private router: Router,
+    private ngZone: NgZone) { }
 
-  ngOnInit() {
-    this.authorService
-      .getAuthors()
-      .then((authors: Author[]) => {
-        this.authors = authors.map(author => {
-          return author;
-        });
-      });
-
-    this.publisherService
-      .getPublishers()
-      .then((publishers: Publisher[]) => {
-        this.publishers = publishers.map(publisher => {
-          return publisher;
-        });
-      });
+  async ngOnInit() {
+    this.authors = await this.authorService.getAuthors();
+    this.publishers = await this.publisherService.getPublishers();
   }
 
-  public createNewBook(newBook: Book): void {
-    if(this.newBook.title && this.newBook.author
-      && this.newBook.available && this.newBook.genre
-      && this.newBook.language && this.newBook.pages && this.newBook.publisher) {
-      this.bookService.createBook(newBook)
-        .then((insertedBook: Book) => {
-          this.ngZone.run(() => {
-            this.router.navigate([`/books/${insertedBook._id}`]);
-          });
-        })
-        .catch(e => console.log(e));
+  async createNewBook(newBook: Book) {
+    if (this.newBook.title && this.newBook.author && this.newBook.available && this.newBook.genre && this.newBook.language && this.newBook.pages && this.newBook.publisher) {
+      let insertedBook = await this.bookService.createBook(newBook);
+      this.ngZone.run(() => this.router.navigate([`/books/${insertedBook._id}`]));
     }
   }
 
